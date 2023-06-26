@@ -1,0 +1,23 @@
+#Date{
+    color: white !important;
+    display: none;}
+#date{
+    display: none;
+}
+#formEvento{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#buttonGuardar{
+    margin-left: 10px;
+}
+h1{
+   text-align: center;
+   margin-bottom: 50px;
+}
+body{
+    background-color: rgb(253, 253, 95);
+}

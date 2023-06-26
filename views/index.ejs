@@ -16,7 +16,6 @@
     <div class="justify-content-start">
       <form action="/eventos" method="POST" id="newForm">
         <div class="d-flex">
-          <label for="titulo"> Tarea:</label>
           <input type="text" class="form-control" id="titulo" name="titulo">
           <button type="submit" class="btn btn-primary" id="buttonGuardar">Guardar</button>
         </div>
@@ -29,17 +28,21 @@
   </div>
 
   <% eventos.forEach((Evento) => { %>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" value="<%= Evento.titulo %>" readonly>
-      <div class="input-group-append">
-        <span class="input-group-text"><%= Evento.date %></span>
-      </div>
-      <form action="/delEvento/<%= Evento.titulo %>" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <button class="btn btn-danger" type="submit">X</button>
-      </form>      
+  <div id="tareas" class="input-group ">
+    <input type="text" class="form-control" value="<%= Evento.titulo %>" readonly>
+    <div class="input-group-append">
+      <span class="input-group-text">
+        <% const formattedDate = new Date(Evento.date).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }); %>
+        <%= formattedDate %>
+      </span>
     </div>
-  <% }) %>
+    <form action="/delEvento/<%= Evento.titulo %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <button class="btn btn-danger" type="submit">X</button>
+    </form>
+  </div>
+<% }) %>
+
 
   <script src="/script/client.js"></script>
 

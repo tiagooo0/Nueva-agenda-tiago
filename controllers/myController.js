@@ -29,20 +29,21 @@ exports.createEvento = (req, res) => {
 
 // Eliminar Evento
 exports.deleteEvento = (req, res) => {
-    const eventoTitle = req.params.titulo;
-  
-    Evento.findOneAndRemove({ titulo: eventoTitle }, (err, evento) => {
-      if (err) {
-        console.error("Error al eliminar el evento:", err);
-        res.status(500).json({ error: "Error al eliminar el evento" });
-      } else if (!evento) {
-        res.status(404).json({ error: "El evento no existe" });
-      } else {
-          console.log("Se elimino con exito el evento")
-        res.redirect("/");
-      }
-    });
-  };
+  const eventoTitle = req.params.titulo;
+
+  Evento.findOneAndRemove({ titulo: eventoTitle }, (err, evento) => {
+    if (err) {
+      console.error("Error al eliminar el evento:", err);
+      res.status(500).json({ error: "Error al eliminar el evento" });
+    } else if (!evento) {
+      res.status(404).json({ error: "El evento no existe" });
+    } else {
+      console.log("Se eliminó con éxito el evento");
+      res.redirect("/");
+    }
+  });
+};
+
 
   //update evento
   exports.updateEvento = (req, res) => {

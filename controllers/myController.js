@@ -5,8 +5,22 @@ const Evento = require("../models/EventoModel");
 
 //Ejemplo de respuesta a una petición de tipo GET
 exports.inicio = (req, res) => {
-    res.status(200).render('index', {eventos});
+  res.status(200).render('index', { eventos });
+  
 };
+exports.inicio1 = async (req, res) => {
+  try {
+    // Consulta todos los eventos y los guarda en la variable eventos
+    const eventos = await Evento.find();
+    
+    // Renderiza la vista 'index' con los datos proporcionados
+    res.render('index', { eventos });
+  } catch (error) {
+    console.log("Error:"+ error);
+    res.status(500).send('Error en el servidor');
+  }
+
+}
 
 // Creacion de evento
 exports.createEvento = (req, res) => {

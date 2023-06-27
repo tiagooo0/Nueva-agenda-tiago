@@ -10,7 +10,8 @@ router.get('/', myController.inicio1)
 router.post("/evento", myController.createEvento);
 router.post('/eventos', myController.createEvento);
 
-router.delete("/delEvento/:titulo", myController.deleteEvento);
+// myRouter.js
+router.post("/delEvento/:id", myController.deleteEvento);
 router.post("/evento/:titulo/edit", myController.updateEvento);
 module.exports = router;
   

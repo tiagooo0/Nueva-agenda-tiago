@@ -40,12 +40,11 @@ exports.createEvento = (req, res) => {
     
 };
 
-
 // Eliminar Evento
 exports.deleteEvento = (req, res) => {
-  const eventoTitle = req.params.titulo;
+  const eventoId = req.params.id; // Cambiamos 'titulo' por 'id'
 
-  Evento.findOneAndRemove({ titulo: eventoTitle }, (err, evento) => {
+  Evento.findByIdAndRemove(eventoId, (err, evento) => { // Cambiamos 'findOneAndRemove' por 'findByIdAndRemove'
     if (err) {
       console.error("Error al eliminar el evento:", err);
       res.status(500).json({ error: "Error al eliminar el evento" });
@@ -57,6 +56,7 @@ exports.deleteEvento = (req, res) => {
     }
   });
 };
+
 
 
   //update evento
